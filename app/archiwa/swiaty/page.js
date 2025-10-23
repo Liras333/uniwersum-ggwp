@@ -22,7 +22,7 @@ export default async function Page(){
                     <Link  href={`/archiwa/swiaty/${swiat.idSwiata}`} key={`${swiat.idSwiata} swiat`} className="grid grid-cols-1 grid-rows-2 lg:grid-cols-[auto_1fr] lg:grid-rows-1 justify-items-center items-center gap-5 py-5  hover:bg-secondary-800 transition-colors rounded">
                         <div className="relative  h-40 w-70">
                             {swiat?.obraz
-                            ? <Image fill className="object-cover pl-5" src={swiat.obraz?.[0]}  alt={`obraz ${swiat.nazwa}`}/>
+                            ? <Image fill  className="object-cover pl-5" src={swiat.obraz?.[0]}  alt={`obraz ${swiat.nazwa}`}/>
                             : <div className=" text-neutral-400 h-full flex justify-center items-center">
                                 <span>{swiat.nazwa}</span>
                             </div>
