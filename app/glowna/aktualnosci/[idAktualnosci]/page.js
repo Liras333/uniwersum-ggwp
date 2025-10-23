@@ -1,7 +1,15 @@
 import Link from "next/link";
-import { getOnePost } from "@/app/_lib/service";
+import { getAktualnosci, getOnePost } from "@/app/_lib/service";
 import { format } from "date-fns";
 
+
+export async function generateStaticParams() {
+    const posty = await getAktualnosci();
+    
+    return posty.map(post => ({
+        idAktualnosci: String(post.id)
+    }))
+}
 
 export default async function Page({params}){
     const {idAktualnosci} = await params;
