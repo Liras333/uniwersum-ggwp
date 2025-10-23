@@ -16,7 +16,7 @@ export default function page(){
            <div>
                 <h3 className="text-2xl font-bold pb-5">Czym jest Świat?</h3>
                 <p className="indent-5">
-                    Świat to planeta na której istnieje życie (np Ziemia jest światem) . Na świat mogą się dostać istoty z innych światów jeżeli mają oni potencjał magiczny.
+                    Świat to planeta na której istnieje życie (np. Ziemia jest światem). Na świat mogą się dostać istoty z innych światów jeżeli mają oni potencjał magiczny.
                 </p>
            </div>
 
