@@ -45,3 +45,15 @@ export async function getSwiaty(){
 
     return data;
 }
+
+export async function getOneSwiat(idSwiata){
+    const { data, error } = await supabase
+    .from('swiaty')
+    .select('*')
+    .eq('idSwiata', idSwiata)
+    .single()
+
+    if(error) throw new Error( error.message);
+
+    return data;
+}
