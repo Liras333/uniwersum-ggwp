@@ -1,9 +1,9 @@
 import {Jost} from 'next/font/google' 
-//Imperial Script 
 import icon from '@/public/favicon.ico'
 import Header from "@/app/_components/Header";
 import "@/app/_styles/global.css";
 import Footer from './_components/Footer';
+import { Archive, Folder, House, Layers } from '@deemlol/next-icons';
 
 
 export const metadata = {
@@ -33,6 +33,14 @@ export default function RootLayout({ children }) {
         <hr className=" border-secondary-700 mx-10 mb-15"/>
         {children}
         <Footer/>
+        <nav className=" fixed bottom-0 w-full bg-neutral-900 lg:hidden">
+          <ul className="flex justify-evenly gap-3  items-center h-full text-xs py-3">
+            <li className="flex flex-col items-center gap-1"><House/> Główna</li>
+            <li className="flex flex-col items-center gap-1"><Archive/> Archiwa</li>
+            <li className="flex flex-col items-center gap-1"><Layers/> Sekcja RPG</li>
+            <li className="flex flex-col items-center gap-1"><Folder/> Gw. Bloodshed</li>
+          </ul>
+        </nav>
       </body>
     </html>
   );
