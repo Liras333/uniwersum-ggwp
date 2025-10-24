@@ -2,6 +2,13 @@ import Link from "next/link";
 import { getAktualnosci, getOnePost } from "@/app/_lib/service";
 import { format } from "date-fns";
 
+export async function generateMetadata({params}){
+    const {idAktualnosci} = await params;
+    const post = await getOnePost(idAktualnosci)
+    return {
+        title: `Post ${post.id}`
+    }
+}
 
 export async function generateStaticParams() {
     const posty = await getAktualnosci();

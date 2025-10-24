@@ -8,10 +8,9 @@ export default function SubNavigation({links}){
     const [isOpen, setIsOpen] = useState(true);
     const pathname = usePathname()
 
-
     return (
         <nav>
-            <ul className="flex flex-col gap-3 align-middle text-secondary-100 text-xl border-r-2 border-secondary-800">
+            <ul className="flex flex-col gap-3 align-middle text-secondary-100 text-xl border-2 md:border-0 md:border-r-2 border-secondary-800">
                 <li onClick={() => setIsOpen(isOpen => !isOpen)} className="flex flex-row-reverse md:hidden items-center justify-between  bg-secondary-800 transition-colors p-5">
                     {!isOpen
                         ? <><ChevronDown/>Rozwiń menu</>
@@ -23,7 +22,6 @@ export default function SubNavigation({links}){
                         <li key={link.href}>
                            <Link
                             href={link.href}
-                            onClick={()=> setIsOpen(false)}
                             className={`${pathname === link.href && 'bg-secondary-800'} hover:bg-secondary-800 transition-colors block p-5`}
                             >
                                 {link.nazwa}

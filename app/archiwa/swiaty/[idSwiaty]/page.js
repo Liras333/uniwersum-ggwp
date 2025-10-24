@@ -2,6 +2,14 @@ import Link from "next/link";
 import { getOneSwiat } from "@/app/_lib/service";
 import Image from "next/image";
 
+export async function generateMetadata({params}){
+    const {idSwiaty} = await params;
+    const swiat = await getOneSwiat(idSwiaty)
+    return {
+        title: `${swiat.nazwa}`
+    }
+}
+
 export default async function Page({params}){
     const {idSwiaty} = await params;
     const swiat = await getOneSwiat(idSwiaty)
