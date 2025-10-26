@@ -1,16 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { supabase } from "./supabase";
 
-export async function getPostacie(){
-    const { data, error } = await supabase
-    .from('postacie')
-    .select('*')
-
-    if(error ) throw new Error("błąd");
-
-    return data;
-}
-
 export async function getAktualnosci(){
     const { data, error } = await supabase
     .from('aktualnosci')
@@ -54,6 +44,17 @@ export async function getOneSwiat(idSwiata){
     .single()
 
     if(error) throw new Error( error.message);
+
+    return data;
+}
+
+export async function getPostacie(from = 0, to = 4){
+    const { data, error } = await supabase
+    .from('postacie')
+    .select('*')
+    .range(from, to)
+
+    if(error) throw new Error("błąd");
 
     return data;
 }
