@@ -14,7 +14,7 @@ export default async function Page({searchParams}){
     const {strona: stronaParam} = await searchParams;
     const page = Number(stronaParam);
     const pageIndex = Number.isNaN(page) ? 0 : Math.max(0, page);
-    const {data, count} = await getPostacie(pageIndex )
+    const {data, count} = await getPostacie(pageIndex)
 
     return (
        <section className="divide-y divide-neutral-700 flex flex-col">

@@ -2,10 +2,11 @@
 
 import { ChevronLeft, ChevronRight } from "@deemlol/next-icons";
 import { usePathname, useSearchParams,useRouter } from "next/navigation";
-import { useState } from "react"
+import { useState, useTransition } from "react"
 
 export default function Pagination({count}){
     const [page, setPage] = useState(0);
+    const [isPending, startTransition] = useTransition();
 
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -16,26 +17,29 @@ export default function Pagination({count}){
 
 
     function next() {
-        setPage((p) => {
-            if(p >= maxPage) return 0;
-            else return p + 1
-        });
+        startTransition(async()=> {
+            setPage((p) => {
+                if(p >= maxPage) return 0;
+                else return p + 1
+            });
 
-        const params = new URLSearchParams(searchParams);
+            const params = new URLSearchParams(searchParams);
 
-        if(page >= maxPage){
-            params.set('strona', 0);
-            router.replace(`${pathname}?${params.toString()}`)
-        }
-        else{
-            params.set('strona', page + 1 );
-            router.replace(`${pathname}?${params.toString()}`)
-        }
+            if(page >= maxPage){
+                params.set('strona', 0);
+                router.replace(`${pathname}?${params.toString()}`)
+            }
+            else{
+                params.set('strona', page + 1 );
+                router.replace(`${pathname}?${params.toString()}`)
+            }
+        }) 
 
     }
 
     function prev() {
-        setPage((p) => {
+        startTransition(async()=> {
+            setPage((p) => {
             if(p <= 0) return maxPage;
             else return p - 1;
         });
@@ -51,14 +55,20 @@ export default function Pagination({count}){
             params.set('strona', page - 1 );
             router.replace(`${pathname}?${params.toString()}`)
         }
+        })
+        
     }
 
     return (
-        <div className="py-5 text-neutral-300 flex items-center justify-center gap-2">
-            
-            <button className="cursor-pointer" onClick={prev}><ChevronLeft/></button>
-            <span>Strona {aktywnaStrona } - {maxPage + 1}</span>
-            <button className="cursor-pointer"  onClick={next}><ChevronRight/></button>
+        <div className="flex flex-col justify-center items-center text-neutral-300">
+            <div className="py-5  flex items-center justify-center gap-2">
+                <button disabled={isPending} className="cursor-pointer hover:text-neutral-200 disabled:text-neutral-700 disabled:cursor-wait" onClick={prev}><ChevronLeft/></button>
+                <span>Strona { aktywnaStrona } - {maxPage + 1}</span>
+                <button  disabled={isPending}className="cursor-pointer hover:text-neutral-200 disabled:text-neutral-700 disabled:cursor-wait"  onClick={next}><ChevronRight/></button>
+            </div>
+            {isPending && <span>Ładowanie...</span>}
         </div>
+
+
     )
 }
