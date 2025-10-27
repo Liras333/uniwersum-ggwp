@@ -43,7 +43,6 @@ export default function Pagination({count}){
             if(p <= 0) return maxPage;
             else return p - 1;
         });
-        
 
         const params = new URLSearchParams(searchParams);
 

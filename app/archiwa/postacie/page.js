@@ -11,7 +11,7 @@ export const revalidate = 3600
 
 
 export default async function Page({searchParams}){
-    const {strona: stronaParam} = await searchParams;
+    const stronaParam = await searchParams.strona;
     const page = Number(stronaParam);
     const pageIndex = Number.isNaN(page) ? 0 : Math.max(0, page);
     const {data, count} = await getPostacie(pageIndex)
