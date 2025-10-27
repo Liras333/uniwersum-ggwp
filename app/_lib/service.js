@@ -48,13 +48,18 @@ export async function getOneSwiat(idSwiata){
     return data;
 }
 
-export async function getPostacie(from = 0, to = 4){
-    const { data, error } = await supabase
+const ITEMS_PER_PAGE = 5;
+
+export async function getPostacie(page = 0) {
+  const from = page * ITEMS_PER_PAGE;
+  const to = from + ITEMS_PER_PAGE - 1;
+
+  const { data, count, error } = await supabase
     .from('postacie')
-    .select('*')
-    .range(from, to)
+    .select('*', { count: 'exact' })
+    .range(from, to);
 
-    if(error) throw new Error("błąd");
-
-    return data;
+  if (error) throw error;
+  
+  return { data, count };
 }

@@ -21,7 +21,7 @@ export default function SubNavigation({links}){
                     links.map(link=> (
                         <li key={link.href}>
                            <Link
-                            href={link.href}
+                            href={`${link.href}/?strona=0`}
                             className={`${pathname === link.href && 'bg-secondary-800'} hover:bg-secondary-800 transition-colors block p-5`}
                             >
                                 {link.nazwa}
