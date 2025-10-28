@@ -12,7 +12,7 @@ export const revalidate = 3600
 
 export default async function Page({searchParams}){
     const stronaParams = await searchParams;
-    const page = Number( awaitstronaParams.strona) ?? 1;
+    const page = Number( stronaParams.strona) ?? 1;
     const pageIndex = !page ? 0 : page;
     const {data, count} = await getPageParam(pageIndex - 1, 'swiaty')
     return (
