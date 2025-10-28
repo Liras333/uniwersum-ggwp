@@ -2,31 +2,36 @@
 
 import { ChevronLeft, ChevronRight } from "@deemlol/next-icons";
 import { usePathname, useSearchParams,useRouter } from "next/navigation";
-import { useState, useTransition } from "react"
+import { useEffect, useState, useTransition } from "react"
 
 export default function Pagination({count}){
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [isPending, startTransition] = useTransition();
 
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const router = useRouter();
-    const aktywnaStrona = Number(searchParams.get('strona') ) + 1;
+    const aktywnaStrona = Number(searchParams.get('strona') ) ;
 
     const maxPage = Math.ceil((count || 0) / 5) - 1;
+
+    useEffect(()=> {
+        setPage(aktywnaStrona);
+
+    }, [aktywnaStrona])
 
 
     function next() {
         startTransition(async()=> {
             setPage((p) => {
-                if(p >= maxPage) return 0;
+                if(p > maxPage) return 1;
                 else return p + 1
             });
 
             const params = new URLSearchParams(searchParams);
 
-            if(page >= maxPage){
-                params.set('strona', 0);
+            if(page > maxPage){
+                params.set('strona', 1);
                 router.replace(`${pathname}?${params.toString()}`)
             }
             else{
@@ -40,14 +45,14 @@ export default function Pagination({count}){
     function prev() {
         startTransition(async()=> {
             setPage((p) => {
-            if(p <= 0) return maxPage;
+            if(p <= 1) return maxPage + 1;
             else return p - 1;
         });
 
         const params = new URLSearchParams(searchParams);
 
-        if(page <= 0){
-            params.set('strona', maxPage);
+        if(page <= 1){
+            params.set('strona', maxPage +1 );
 		    router.replace(`${pathname}?${params.toString()}`)
         }
         else{
@@ -55,7 +60,6 @@ export default function Pagination({count}){
             router.replace(`${pathname}?${params.toString()}`)
         }
         })
-        
     }
 
     return (

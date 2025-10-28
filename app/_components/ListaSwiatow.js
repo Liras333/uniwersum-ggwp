@@ -2,8 +2,7 @@ import { getSwiaty } from "@/app/_lib/service"
 import Image from "next/image"
 import Link from "next/link"
 
-export default async function ListaSwiatow(){
-    const swiaty = await getSwiaty()
+export default async function ListaSwiatow({swiaty}){
     
     return (
         swiaty.map((swiat) => (

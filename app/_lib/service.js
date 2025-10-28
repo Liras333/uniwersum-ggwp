@@ -48,17 +48,7 @@ export async function getOneSwiat(idSwiata){
     return data;
 }
 
-const ITEMS_PER_PAGE = 5
-export async function getPostacie(page = 0) {
-  const from = page * ITEMS_PER_PAGE;
-  const to = from + ITEMS_PER_PAGE - 1;
-
-  const { data, count, error } = await supabase
-    .from('postacie')
-    .select('*', { count: 'exact' })
-    .range(from, to)
-
-  if (error) throw error;
-
-  return { data, count };
-}
+// const 
+// export async function getPostacie(page = 0) {
+  
+// }

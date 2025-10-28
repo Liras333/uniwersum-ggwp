@@ -4,6 +4,8 @@ import Header from "@/app/_components/Header";
 import "@/app/_styles/global.css";
 import Footer from './_components/Footer';
 import MobileNavigation from './_components/MobileNavigation';
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
+import Error from './error';
 
 export const metadata = {
   title: {
@@ -30,7 +32,9 @@ export default function RootLayout({ children }) {
       <body className={`${jostear.className}  bg-secondary-900 grid grid-cols-1 grid-rows-[5rem_auto_1fr]  min-h-screen`}>
         <Header/>
         <hr className=" border-secondary-700 mx-10 mb-15"/>
-        {children}
+        <ErrorBoundary fallback={<Error/>}>
+          {children}
+        </ErrorBoundary>
         <Footer/>
         <MobileNavigation/>
       </body>
