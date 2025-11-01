@@ -49,3 +49,29 @@ export const archiwa = [
         href:'/archiwa/przedmioty'
     }
 ]
+
+export const sersjaRPG = [
+    {
+        nazwa: 'Sesja RPG',
+        href:"/sesja-rpg"
+    },
+    {
+        nazwa:'archiwa sesji',
+        href:'/sesja-rpg/archiwa'
+    }
+]
+
+export const gatewayBloodshed = [
+    {
+        nazwa: 'Gateway Bloodshed',
+        href:"/gateway-bloodshed"
+    },
+    {
+        nazwa:'karty',
+        href:'/gateway-bloodshed/karty'
+    },
+    {
+        nazwa:'zasady',
+        href:'/gateway-bloodshed/zasady'
+    }
+]

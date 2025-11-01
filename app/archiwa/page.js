@@ -5,8 +5,16 @@ export const metadata = {
 
 export default function page(){
     return (
-        <section className="grid  grid-cols-1 md:grid-cols-[auto_auto_auto] grid-rows-3 gap-5 gap-x-10  mx-auto ">
-           
+        <section className="flex flex-col gap-3">
+           <h2 className="text-4xl  text-primary-300 py-2">Ogólne informacje</h2>
+           <p>Znajdują się tutaj archiwa i różne historie i wydarzenia w świecie <b>Uniwersum G.G.W.P</b> takie jak:</p>
+           <ul className="list-disc pl-5">
+            <li>Postacie</li>
+            <li>Śwaty</li>
+            <li>Wydarzenia</li>
+            <li>Lokacje</li>
+            <li>Przemdioty</li>
+           </ul>
        </section>
     )
 }
