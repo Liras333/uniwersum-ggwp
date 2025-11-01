@@ -15,7 +15,7 @@ export default function Footer(){
                 </h3>
                 <p className="w-40 text-neutral-400">
                     Uniwersum G.G.W.P. Jest to wielki zbiór historii które miały miejsce na przestrzeni ponad 5 Epok ( około 12 500 lat). <br/>
-                    <Link href="/glowna/" className="text-primary-400 hover:text-primary-600"><span>Czytaj dalej &gt;&gt;&gt;</span></Link>
+                    <Link href="/glowna" className="text-primary-400 hover:text-primary-600"><span>Czytaj dalej &gt;&gt;&gt;</span></Link>
                 </p>
             </section>
 

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronUp } from "@deemlol/next-icons"
 import { useState } from "react";
 
-export default function SubNavigation({links, isPaginating = false}){
+export default function SubNavigation({links}){
     const [isOpen, setIsOpen] = useState(true);
     const pathname = usePathname()
 
@@ -21,7 +21,8 @@ export default function SubNavigation({links, isPaginating = false}){
                     links.map(link=> (
                         <li key={link.href}>
                            <Link
-                            href={`${link.href}${isPaginating ? '/?strona=1' : ''}`}
+                            href={`${link.href}${link.isPaginating ? '?strona=1' : ''}`}
+
                             className={`${pathname === link.href && 'bg-secondary-800'} hover:bg-secondary-800 transition-colors block p-5`}
                             >
                                 {link.nazwa}

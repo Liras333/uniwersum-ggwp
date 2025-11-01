@@ -19,8 +19,6 @@ export const najnowsze = [
         nazwa: 'Postać dnia',
         href:"/glowna/postac-dnia"
     },
-   
-
 ]
 
 export const archiwa = [
@@ -30,23 +28,28 @@ export const archiwa = [
     },
     {
         nazwa: 'Postacie',
-        href:'/archiwa/postacie'
+        href:'/archiwa/postacie',
+        isPaginating: true
     },
     {
         nazwa: 'Światy',
-        href:'/archiwa/swiaty'
+        href:'/archiwa/swiaty',
+        isPaginating: true
     },
     {
         nazwa: 'Wydarzenia',
-        href:'/archiwa/wydarzenia'
+        href:'/archiwa/wydarzenia',
+        isPaginating: true
     },
     {
         nazwa: 'Lokacje',
-        href:'/archiwa/lokacje'
+        href:'/archiwa/lokacje',
+        isPaginating: true
     },
     {
         nazwa: 'Przedmioty',
-        href:'/archiwa/przedmioty'
+        href:'/archiwa/przedmioty',
+        isPaginating: true
     }
 ]
 
@@ -57,7 +60,8 @@ export const sersjaRPG = [
     },
     {
         nazwa:'archiwa sesji',
-        href:'/sesja-rpg/archiwa'
+        href:'/sesja-rpg/archiwa',
+        isPaginating: true
     }
 ]
 
@@ -68,7 +72,8 @@ export const gatewayBloodshed = [
     },
     {
         nazwa:'karty',
-        href:'/gateway-bloodshed/karty'
+        href:'/gateway-bloodshed/karty',
+        isPaginating: true
     },
     {
         nazwa:'zasady',

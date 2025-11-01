@@ -10,8 +10,7 @@ export default function FooterSubNavigation({links}){
                 {links.map(link=> (
                     <li key={link.href} >
                        <Link
-                        // href={`${link.href}${isPaginating ? '/?strona=1' : ''}`}
-                        href={link.href}
+                        href={`${link.href}${link.isPaginating ? '?strona=1' : ''}`}
                         className={`hover:text-neutral-300  transition-colors block`}
                         >
                         {link.nazwa}
