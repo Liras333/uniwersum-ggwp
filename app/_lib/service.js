@@ -48,7 +48,15 @@ export async function getOneSwiat(idSwiata){
     return data;
 }
 
-// const 
-// export async function getPostacie(page = 0) {
-  
-// }
+
+export async function getOnePostac(idPostaci){
+    const { data, error } = await supabase
+    .from('postacie')
+    .select('*')
+    .eq('id', idPostaci)
+    .single()
+
+    if(error) throw new Error( error.message);
+
+    return data;
+}
