@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       <body
-        className={`${jostear.className}  bg-secondary-900 grid grid-cols-1 grid-rows-[5rem_auto_1fr]  `}
+        className={`${jostear.className}  bg-secondary-900 grid grid-cols-1 grid-rows-[5rem_auto_1fr] overflow-hidden min-h-screen`}
       >
         <Header />
         <hr className=" border-secondary-700 mx-10 mb-15" />

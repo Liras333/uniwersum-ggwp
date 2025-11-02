@@ -3,6 +3,7 @@
 import { Search } from "@deemlol/next-icons";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import { setSearchedPostac } from "../_lib/actions";
 
 export default function FilterSort() {
   const [search, setSearch] = useState("");
@@ -11,10 +12,11 @@ export default function FilterSort() {
   const router = useRouter();
 
   const strona = searchParams.get("sort") || "najnowsze";
-
   function checkSort(sorting) {
     if (strona === sorting) return true;
   }
+
+  const daneSzukane = setSearchedPostac.bind(null, pathname, searchParams);
 
   function handleSort(sorting) {
     const params = new URLSearchParams(searchParams);
@@ -26,18 +28,27 @@ export default function FilterSort() {
 
   return (
     <div className="flex flex-col-reverse gap-5 items-center lg:flex-row flex-wrap justify-between  my-5">
-      <p className="flex items-center rounded gap-3 bg-secondary-800 pl-3 py-1">
+      <form
+        action={async (formData) => {
+          await daneSzukane(formData);
+        }}
+        className="flex items-center rounded gap-3 bg-secondary-800 pl-3"
+      >
         <span className="text-neutral-300">
           <Search size={20} />
         </span>
         <input
+          name="szukaj"
           onChange={(e) => setSearch(e.target.value)}
           value={search}
           type="text"
           placeholder="Wyszukaj"
           className="px-1.5 py-1 focus:outline-solid focus:outline-secondary-300 focus:outline-2 focus:rounded"
         />
-      </p>
+        <button className="bg-secondary-600 text-neutral-200 py-1 px-2 cursor-pointer rounded hover:bg-secondary-700 transition-colors active:bg-secondary-600">
+          Znajdź
+        </button>
+      </form>
 
       <div className="flex justify-end items-center ">
         <button

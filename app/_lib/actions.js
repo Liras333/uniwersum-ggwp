@@ -2,7 +2,10 @@
 
 const ITEMS_PER_PAGE = 5;
 
+import { redirect } from "next/navigation";
+
 import { supabase } from "./supabase";
+import { revalidatePath } from "next/cache";
 
 export async function getPageParam(page = 0, table, searchText = "", sort) {
   const from = page * ITEMS_PER_PAGE;
@@ -31,4 +34,11 @@ export async function getPageParam(page = 0, table, searchText = "", sort) {
   return { data, count };
 }
 
-// export async function getPageFilters() {}
+export async function setSearchedPostac(pathname, searchParams, formData) {
+  const params = new URLSearchParams(searchParams);
+  revalidatePath(
+    `${pathname}?${params.toString()}&search=${formData.get("szukaj")}`
+  );
+
+  redirect(`${pathname}?${params.toString()}&search=${formData.get("szukaj")}`);
+}
