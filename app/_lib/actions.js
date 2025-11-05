@@ -1,18 +1,22 @@
 "use server";
 
-const ITEMS_PER_PAGE = 5;
-
 import { redirect } from "next/navigation";
-
 import { supabase } from "./supabase";
 import { revalidatePath } from "next/cache";
 
-export async function getPageParam(page = 0, table, searchText = "", sort) {
-  const from = page * ITEMS_PER_PAGE;
+const ITEMS_PER_PAGE = 5;
+
+export async function getPageParam({ stronaParams, tabela }) {
+  const sort = stronaParams.sort ?? "";
+  const page = Number(stronaParams.strona) ?? 1;
+  const pageIndex = !page ? 0 : page;
+  const searchText = stronaParams.search ?? "";
+
+  const from = (pageIndex - 1) * ITEMS_PER_PAGE;
   const to = from + ITEMS_PER_PAGE - 1;
 
   let query = supabase
-    .from(table)
+    .from(tabela)
     .select("*", { count: "exact" })
     .range(from, to);
 

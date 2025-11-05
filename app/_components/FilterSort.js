@@ -32,9 +32,9 @@ export default function FilterSort() {
         action={async (formData) => {
           await daneSzukane(formData);
         }}
-        className="flex items-center rounded gap-3 bg-secondary-800 pl-3"
+        className="flex items-center rounded gap-3 bg-secondary-800 pl-3 "
       >
-        <span className="text-neutral-300">
+        <span className="text-neutral-600">
           <Search size={20} />
         </span>
         <input
@@ -45,8 +45,8 @@ export default function FilterSort() {
           placeholder="Wyszukaj"
           className="px-1.5 py-1 focus:outline-solid focus:outline-secondary-300 focus:outline-2 focus:rounded"
         />
-        <button className="bg-secondary-600 text-neutral-200 py-1 px-2 cursor-pointer rounded hover:bg-secondary-700 transition-colors active:bg-secondary-600">
-          Znajdź
+        <button className="bg-secondary-600 text-neutral-300 py-2 px-3 cursor-pointer rounded hover:bg-secondary-700 transition-colors active:bg-secondary-600">
+          <Search size={20} />
         </button>
       </form>
 

@@ -8,21 +8,16 @@ import { Suspense } from "react";
 export const metadata = {
   title: "postacie",
 };
+
 export const revalidate = 3600;
 
 export default async function Page({ searchParams }) {
   const stronaParams = await searchParams;
-  const sorting = stronaParams.sort ?? "";
-  const page = Number(stronaParams.strona) ?? 1;
-  const pageIndex = !page ? 0 : page;
-  const search = stronaParams.search ?? "";
 
-  const { data, count } = await getPageParam(
-    pageIndex - 1,
-    "postacie",
-    search,
-    sorting
-  );
+  const { data, count } = await getPageParam({
+    stronaParams,
+    tabela: "postacie",
+  });
 
   return (
     <section className="  divide-neutral-700 flex flex-col">
@@ -30,9 +25,8 @@ export default async function Page({ searchParams }) {
       <FilterSort />
       <Suspense fallback={<Spinner />}>
         <ListaPostaci postacie={data} />
+        <Pagination count={count} />
       </Suspense>
-
-      <Pagination count={count} />
     </section>
   );
 }
