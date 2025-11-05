@@ -15,11 +15,12 @@ export default async function Page({ searchParams }) {
   const sorting = stronaParams.sort ?? "";
   const page = Number(stronaParams.strona) ?? 1;
   const pageIndex = !page ? 0 : page;
+  const search = stronaParams.search ?? "";
 
   const { data, count } = await getPageParam(
     pageIndex - 1,
     "postacie",
-    "",
+    search,
     sorting
   );
 

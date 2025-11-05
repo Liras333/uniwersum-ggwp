@@ -36,9 +36,10 @@ export async function getPageParam(page = 0, table, searchText = "", sort) {
 
 export async function setSearchedPostac(pathname, searchParams, formData) {
   const params = new URLSearchParams(searchParams);
-  revalidatePath(
-    `${pathname}?${params.toString()}&search=${formData.get("szukaj")}`
-  );
+  const search = params.get("search");
 
-  redirect(`${pathname}?${params.toString()}&search=${formData.get("szukaj")}`);
+  params.set("search", formData.get("szukaj"));
+
+  revalidatePath(`${pathname}?${params.toString()}`);
+  redirect(`${pathname}?${params.toString()}`);
 }
