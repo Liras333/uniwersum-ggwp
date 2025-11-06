@@ -1,23 +1,24 @@
 "use client";
 
-import { Search } from "@deemlol/next-icons";
+import { Search, X } from "@deemlol/next-icons";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { setSearchedPostac } from "../_lib/actions";
 
 export default function FilterSort() {
-  const [search, setSearch] = useState("");
-  // const [isPending, startTransition] = useTransition();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
   const strona = searchParams.get("sort") || "najnowsze";
+  const searchText = searchParams.get("search") || "";
+  const daneSzukane = setSearchedPostac.bind(null, pathname, searchParams);
+
+  const [search, setSearch] = useState(searchText);
+
   function checkSort(sorting) {
     if (strona === sorting) return true;
   }
-
-  const daneSzukane = setSearchedPostac.bind(null, pathname, searchParams);
 
   function handleSort(sorting) {
     const params = new URLSearchParams(searchParams);
@@ -33,7 +34,7 @@ export default function FilterSort() {
         action={async (formData) => {
           await daneSzukane(formData);
         }}
-        className="flex items-center rounded gap-3 bg-secondary-800 pl-3 "
+        className="flex items-center rounded gap-3 bg-secondary-800 pl-3 relative "
       >
         <span className="text-neutral-600">
           <Search size={20} />
@@ -49,6 +50,14 @@ export default function FilterSort() {
         <button className="bg-secondary-600 text-neutral-300 py-2 px-3 cursor-pointer rounded hover:bg-secondary-700 transition-colors active:bg-secondary-600">
           <Search size={20} />
         </button>
+        {search && (
+          <button
+            onClick={() => setSearch("")}
+            className="absolute text-neutral-300 right-15 bg-secondary-800 rounded cursor-pointer hover:text-neutral-100 transition-colors hover:bg-secondary-500 p-1"
+          >
+            <X size={16} />
+          </button>
+        )}
       </form>
 
       <div className="flex justify-end items-center ">

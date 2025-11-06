@@ -1,33 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ListaPostaci({ postacie }) {
-  return postacie.map((postac) => (
+export default function RecordsList({ data, tabela }) {
+  return data.map((rekord) => (
     <Link
-      href={`/archiwa/postacie/${postac.id}`}
-      key={`${postac.id} postac`}
+      href={`/archiwa/${tabela}/${rekord.id}`}
+      key={`${rekord.id}_${tabela}`}
       className="grid grid-cols-1 grid-rows-2 lg:grid-cols-[auto_1fr] lg:grid-rows-1 justify-items-center items-center gap-5 p-5 border-b  hover:bg-secondary-800 transition-colors rounded"
     >
       <div className="relative h-40 w-full lg:w-50">
-        {postac?.obraz ? (
+        {rekord?.obraz?.at(0) || rekord?.obraz ? (
           <Image
             fill
             quality={40}
             className="object-scale-down"
-            src={postac.obraz}
-            alt={`obraz ${postac.nazwa}`}
+            src={
+              Array.isArray(rekord.obraz) ? rekord.obraz.at(0) : rekord.obraz
+            }
+            alt={`obraz ${rekord.nazwa}`}
           />
         ) : (
           <div className=" text-neutral-400 h-full flex justify-center items-center">
-            <span>{postac.nazwa}</span>
+            <span>{rekord.nazwa}</span>
           </div>
         )}
       </div>
 
       <div>
-        <h2 className="text-2xl pb-1">{postac.nazwa}</h2>
+        <h2 className="text-2xl pb-1">{rekord.nazwa}</h2>
         <p className="whitespace-pre-wrap">
-          {postac.historia.slice(0, 300)} ...{" "}
+          {rekord.opis.slice(0, 300)} ...{" "}
           <span className="text-primary-300 underline hover:text-primary-200">
             Czytaj dalej
           </span>

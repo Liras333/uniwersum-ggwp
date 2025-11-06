@@ -47,3 +47,5 @@ export async function setSearchedPostac(pathname, searchParams, formData) {
   revalidatePath(`${pathname}?${params.toString()}`);
   redirect(`${pathname}?${params.toString()}`);
 }
+
+export async function setDefaultSearch() {}

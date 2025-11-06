@@ -1,6 +1,6 @@
 import FilterSort from "@/app/_components/FilterSort";
-import ListaPostaci from "@/app/_components/ListaPostaci";
 import Pagination from "@/app/_components/Pagination";
+import RecordsList from "@/app/_components/RecordsList";
 import Spinner from "@/app/_components/Spinner";
 import { getPageParam } from "@/app/_lib/actions";
 import { Suspense } from "react";
@@ -24,7 +24,7 @@ export default async function Page({ searchParams }) {
       <h2 className="text-4xl text-primary-300 py-5">Postacie</h2>
       <FilterSort />
       <Suspense fallback={<Spinner />}>
-        <ListaPostaci postacie={data} />
+        <RecordsList data={data} tabela="postacie" />
         <Pagination count={count} />
       </Suspense>
     </section>
