@@ -1,5 +1,4 @@
 import FilterSort from "@/app/_components/FilterSort";
-import ListaSwiatow from "@/app/_components/ListaSwiatow";
 import Pagination from "@/app/_components/Pagination";
 import RecordsList from "@/app/_components/RecordsList";
 import Spinner from "@/app/_components/Spinner";
