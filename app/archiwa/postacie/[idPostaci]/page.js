@@ -63,7 +63,7 @@ export default async function Page({ params }) {
             {postac.umiejetnosci}
           </p>
           <p>
-            <DataStatusColor data={postac.historia}>Historia: </DataStatusColor>
+            <DataStatusColor data={postac.opis}>Historia: </DataStatusColor>
             {postac.opis}
           </p>
           <p>
