@@ -71,3 +71,27 @@ export async function getOneWydarzenie(idWydarzenia) {
 
   return data;
 }
+
+export async function getOneLokacja(idLokacji) {
+  const { data, error } = await supabase
+    .from("lokacje")
+    .select("*")
+    .eq("id", idLokacji)
+    .single();
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
+
+export async function getOnePrzedmiot(idPrzedmiotu) {
+  const { data, error } = await supabase
+    .from("przedmiot")
+    .select("*")
+    .eq("id", idPrzedmiotu)
+    .single();
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
