@@ -40,7 +40,7 @@ export async function getOneSwiat(idSwiata) {
   const { data, error } = await supabase
     .from("swiaty")
     .select("*")
-    .eq("idSwiata", idSwiata)
+    .eq("id", idSwiata)
     .single();
 
   if (error) throw new Error(error.message);

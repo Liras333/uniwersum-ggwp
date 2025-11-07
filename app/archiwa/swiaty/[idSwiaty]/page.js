@@ -40,7 +40,7 @@ export default async function Page({ params }) {
         <p>{swiat.opis}</p>
         <Link
           className="lg:col-start-2 justify-self-end  bg-primary-500  text-neutral-950 px-3 py-2 hover:bg-primary-400 transition-colors"
-          href="/archiwa/swiaty"
+          href="/archiwa/swiaty?strona=1"
         >
           &larr; Wróć
         </Link>
