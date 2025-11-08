@@ -95,3 +95,28 @@ export async function getOnePrzedmiot(idPrzedmiotu) {
 
   return data;
 }
+
+export async function getRandomPostac() {
+  const { data, error } = await supabase
+    .from("postacie")
+    .select("*")
+    .order("id", { ascending: true })
+    .limit(1)
+    .range(
+      new Date()
+        .toISOString()
+        .split("T")[0]
+        .split("")
+        .reduce((a, c) => a + c.charCodeAt(0), 0) % 15, // OFFSET
+      new Date()
+        .toISOString()
+        .split("T")[0]
+        .split("")
+        .reduce((a, c) => a + c.charCodeAt(0), 0) % 15
+    )
+    .single();
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
