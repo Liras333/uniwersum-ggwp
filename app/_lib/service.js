@@ -120,3 +120,11 @@ export async function getRandomPostac() {
 
   return data;
 }
+
+export async function getFilms() {
+  const { data, error } = await supabase.from("filmy").select("*");
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
