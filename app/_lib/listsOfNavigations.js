@@ -80,3 +80,15 @@ export const gatewayBloodshed = [
     href: "/gateway-bloodshed/zasady",
   },
 ];
+
+export const serial = [
+  {
+    nazwa: "informacje",
+    href: "/serial/informacje",
+    isPaginating: true,
+  },
+  {
+    nazwa: "odcinki",
+    href: "/serial/odcinki",
+  },
+];

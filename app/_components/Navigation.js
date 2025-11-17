@@ -14,7 +14,7 @@ export default function Navigation() {
           <Link href="/rpg">Sekcja RPG</Link>
         </li>
         <li className=" hover:text-secondary-300 transition-all ">
-          <Link href="/krwawa-era">Gateway Bloodshed</Link>
+          <Link href="/serial">Serial G.G.W.P.</Link>
         </li>
       </ul>
     </nav>

@@ -3,6 +3,7 @@ import {
   archiwa,
   sersjaRPG,
   gatewayBloodshed,
+  serial,
 } from "@/app/_lib/listsOfNavigations";
 import FooterSubNavigation from "./FooterSubNavigation";
 
@@ -26,8 +27,8 @@ export default function FooterLinksList() {
         </nav>
 
         <nav className="flex flex-col gap-2 my-5 ">
-          <h3 className="text-xl ">GatewayBloodshed</h3>
-          <FooterSubNavigation links={gatewayBloodshed} />
+          <h3 className="text-xl ">Serial G.G.W.P.</h3>
+          <FooterSubNavigation links={serial} />
         </nav>
       </div>
     </section>
