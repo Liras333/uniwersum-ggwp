@@ -84,8 +84,7 @@ export const gatewayBloodshed = [
 export const serial = [
   {
     nazwa: "informacje",
-    href: "/serial/informacje",
-    isPaginating: true,
+    href: "/serial",
   },
   {
     nazwa: "odcinki",
