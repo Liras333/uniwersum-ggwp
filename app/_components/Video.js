@@ -1,20 +1,20 @@
-import Link from "next/link";
-
-export default function Video({ video }) {
-  const thumb = `https://img.youtube.com/vi/${video.film}/hqdefault.jpg`;
-
+export default async function Video({ idFilmu }) {
   return (
-    <Link
-      href={`/serial/odcinki/${video.id}`}
-      className="flex flex-col gap-2 text-md p-2 rounded-md hover:bg-neutral-600 transition-colors cursor-pointer"
-    >
-      <div
-        className="bg-cover bg-center rounded-md aspect-video"
-        style={{ backgroundImage: `url("${thumb}")` }}
-        role="img"
-        aria-label={video.nazwa}
-      />
-      <h4>{video.nazwa.slice(0, 50)}...</h4>
-    </Link>
+    <section>
+      <h2 className="text-3xl text-primary-300 py-5">film</h2>
+      {/* <video width="320" height="240" controls preload="none">
+        <source
+          src={`https://www.youtube.com/embed/${idFilmu}`}
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video> */}
+      <iframe
+        width="100%"
+        height="500px"
+        src={`https://www.youtube.com/embed/${idFilmu}`}
+        allowfullscreen=""
+      ></iframe>
+    </section>
   );
 }

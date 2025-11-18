@@ -59,7 +59,7 @@ export const sersjaRPG = [
     href: "/sesja-rpg",
   },
   {
-    nazwa: "archiwa sesji",
+    nazwa: "Archiwa sesji",
     href: "/sesja-rpg/archiwa",
     isPaginating: true,
   },
@@ -71,23 +71,27 @@ export const gatewayBloodshed = [
     href: "/gateway-bloodshed",
   },
   {
-    nazwa: "karty",
+    nazwa: "Karty",
     href: "/gateway-bloodshed/karty",
     isPaginating: true,
   },
   {
-    nazwa: "zasady",
+    nazwa: "Zasady",
     href: "/gateway-bloodshed/zasady",
   },
 ];
 
 export const serial = [
   {
-    nazwa: "informacje",
+    nazwa: "Informacje",
     href: "/serial",
   },
   {
-    nazwa: "odcinki",
+    nazwa: "Odcinki",
     href: "/serial/odcinki",
+  },
+  {
+    nazwa: "Playlisty",
+    href: "/serial/playlisty",
   },
 ];
