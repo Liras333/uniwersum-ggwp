@@ -131,3 +131,15 @@ export async function getVideos() {
 
   return data;
 }
+
+export async function getOneVideo(kodFilmu) {
+  const { data, error } = await supabase
+    .from("filmy")
+    .select("*")
+    .eq("film", kodFilmu)
+    .single();
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}

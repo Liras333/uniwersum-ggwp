@@ -1,4 +1,4 @@
-import Video from "@/app/_components/VideoList";
+import VideoList from "@/app/_components/VideoList";
 import { getVideos } from "@/app/_lib/service";
 
 export default async function page() {
