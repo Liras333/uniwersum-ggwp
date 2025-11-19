@@ -143,3 +143,31 @@ export async function getOneVideo(kodFilmu) {
 
   return data;
 }
+
+export async function getProposedVideos(idFilmu) {
+  const { count: totalCount, error: countError } = await supabase
+    .from("filmy")
+    .select("id", { count: "exact", head: true });
+
+  if (countError) throw new Error(countError.message);
+
+  const total = totalCount || 0;
+
+  let query = supabase
+    .from("filmy")
+    .select("*")
+    .order("id", { ascending: false });
+  if (idFilmu + 5 <= total - 1) {
+    query = query.range(idFilmu - 1, idFilmu + 5);
+  } else {
+    const start = total - 6;
+    const end = total - 1;
+    query = query.range(start, end);
+  }
+
+  const { data, error } = await query;
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}

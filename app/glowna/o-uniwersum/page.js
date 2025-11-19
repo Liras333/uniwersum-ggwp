@@ -1,12 +1,8 @@
-import { getFilms } from "@/app/_lib/service";
-
 export const metadata = {
   title: "O uniwersum",
 };
 
 export default async function Page() {
-  const filmy = await getFilms();
-  console.log(filmy);
   return (
     <section className="flex flex-col gap-6">
       <div>
