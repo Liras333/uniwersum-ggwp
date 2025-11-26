@@ -202,7 +202,7 @@ export async function getPlaylistVideos(idPlaylisty) {
       `
       *,
       playlista_film!inner (
-        id_playlisty,
+        id_playlisty
       )
 
     `
