@@ -171,3 +171,14 @@ export async function getProposedVideos(idFilmu) {
 
   return data;
 }
+
+export async function getPlaylists() {
+  const { data, error } = await supabase
+    .from("playlisty")
+    .select("*")
+    .order("id", { ascending: false });
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
