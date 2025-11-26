@@ -182,3 +182,35 @@ export async function getPlaylists() {
 
   return data;
 }
+
+export async function countOfVideos(idPlaylisty) {
+  const { data, error, count } = await supabase
+    .from("playlista_film")
+    .select("*", { count: "exact", head: true })
+    .eq("id_playlisty", idPlaylisty)
+    .order("id", { ascending: false });
+
+  if (error) throw new Error(error.message);
+
+  return count;
+}
+
+export async function getPlaylistVideos(idPlaylisty) {
+  const { data, error } = await supabase
+    .from("filmy")
+    .select(
+      `
+      *,
+      playlista_film!inner (
+        id_playlisty,
+      )
+
+    `
+    )
+    .eq("playlista_film.id_playlisty", idPlaylisty)
+    .order("id", { ascending: false });
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
